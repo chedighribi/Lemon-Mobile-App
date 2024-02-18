@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { ScrollView, Text, StyleSheet, TextInput } from 'react-native';
+import { ScrollView, Text, StyleSheet, TextInput, Pressable } from 'react-native';
+import { Button } from 'react-native-web';
 
 export default function LittleLemonForm() {
     const [firstName, onChangeFirstName] = React.useState('')
     const [lastName, onChangeLastName] = React.useState('')
+    const [login, setLogin] = React.useState(false)
 
     return (
         <ScrollView>
@@ -13,19 +15,26 @@ export default function LittleLemonForm() {
                 and classic cocktails in a lively but casual environment. We would love
                 to hear more about your experience with us!
             </Text>
-            <TextInput
-                style={styles.inputBox}
-                value={firstName}
-                onChangeText={onChangeFirstName}
-                placeholder={'First Name'}
-            />
-            <TextInput
-                style={styles.inputBox}
-                value={lastName}
-                onChangeText={onChangeLastName}
-                placeholder={'Last Name'}
-            />
-
+            {login && <Text style={styles.headerText}>You are logged in!</Text>}
+            {!login &&
+                <>
+                    <TextInput
+                        style={styles.inputBox}
+                        value={firstName}
+                        onChangeText={onChangeFirstName}
+                        placeholder={'First Name'}
+                    />
+                    <TextInput
+                        style={styles.inputBox}
+                        value={lastName}
+                        onChangeText={onChangeLastName}
+                        placeholder={'Last Name'}
+                    />
+                    <Pressable onPress={() => setLogin(!login)} style={styles.button}>
+                        <Text style={styles.buttonText}> Login </Text>
+                    </Pressable>
+                </>
+            }
         </ScrollView>
     );
 }
@@ -50,5 +59,20 @@ const styles = StyleSheet.create({
         fontSize: 16,
         borderColor: '#EDEFEE',
         backgroundColor: '#EDEFEE',
+    },
+    button: {
+        fontSize: 22,
+        padding: 10,
+        marginVertical: 8,
+        margin: 100,
+        backgroundColor: '#EE9972',
+        borderColor: '#EE9972',
+        borderWidth: 2,
+        borderRadius: 50,
+    },
+    buttonText: {
+        color: 'black',
+        textAlign: 'center',
+        fontSize: 25,
     },
 });
