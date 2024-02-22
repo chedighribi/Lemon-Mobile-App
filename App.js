@@ -10,17 +10,17 @@ import LittleLemonForm from './components/Form'
 export default function App() {
   return (
     <>
-      {/* <View style={styles.container}>
+      <View style={styles.container}>
         <LittleLemonHeader />
         <WelcomeScreen />
         <MenuItems />
-      </View> */}
-      <View>
-        <LittleLemonForm />
       </View>
-      {/* <View style={styles.footerContainer}>
-        <LittleLemonFooter />
+      {/* <View>
+        <LittleLemonForm />
       </View> */}
+      <View style={styles.footerContainer}>
+        <LittleLemonFooter />
+      </View>
     </>
   );
 }
