@@ -6,11 +6,15 @@ import LittleLemonFooter from './components/LittleLemonFooter';
 import WelcomeScreen from './components/WelcomeScreen';
 import MenuItems from './components/MenuItems';
 import LittleLemonForm from './components/Form'
+import { useColorScheme } from 'react-native'
 
 export default function App() {
+  const colorScheme = useColorScheme();
   return (
     <>
-      <View style={styles.container}>
+      <View style={[styles.container, colorScheme === 'light'
+        ? { backgroundColor: '#fff' }
+        : { backgroundColor: '#333333', }]}>
         <LittleLemonHeader />
         <WelcomeScreen />
         <MenuItems />
@@ -28,7 +32,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#333333',
   },
   footerContainer: { backgroundColor: '#333333' },
 });
